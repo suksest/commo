@@ -24,7 +24,7 @@ Here is the steps to run it with `docker-compose`
 $ cd workspace
 
 # Clone into YOUR $GOPATH/src
-$ git clone https://github.com/suksest/commo.git
+$ git clone https://github.com/suksest/commodity.git
 
 #move to project
 $ cd commo
@@ -46,3 +46,4 @@ $ make stop
 ```
 
 ### API Documentation
+Import or use `api_doc.yml` in Swagger
