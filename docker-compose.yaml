@@ -1,0 +1,34 @@
+version: "2.3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: commo_web
+    ports:
+      - 17845:17845
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  mysql:
+    image: mysql:latest 
+    container_name: commo_mysql
+    command: mysqld --user=root
+    volumes:
+      - main_mysql:/var/lib/mysql
+      - ./initial_up.sql:/docker-entrypoint-initdb.d/initial_up.sql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=commo_db
+      - MYSQL_USER=commo
+      - MYSQL_PASSWORD=commo
+      - MYSQL_ROOT_PASSWORD=secret
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+
+volumes:
+  main_mysql:

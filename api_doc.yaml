@@ -1,0 +1,221 @@
+openapi: 3.0.0
+info:
+  title: Commodity
+  contact: {email: "sukmasetyaji@gmail.com"}
+  version: '1.0'
+servers:
+- url: http://localhost:17845
+  variables: {}
+paths:
+  /commodity/fetch:
+    get:
+      tags: 
+      - Commodity
+      summary: Get commodity details
+      operationId: FetchCommodity
+      responses:
+        200:
+          description: 'get commodity details'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommodityResponse'
+                
+      deprecated: false
+  /version:
+    get:
+      tags:
+      - Misc
+      summary: Get Version
+      operationId: GetVersion
+      parameters: []
+      responses:
+        200:
+          description: 'get API version'
+          headers: {}
+      deprecated: false
+  /auth/signup:
+    post:
+      tags:
+      - Auth
+      summary: Signup
+      operationId: Signup
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignupRequest'
+            example: 
+        required: true
+      responses:
+        200:
+          description: 'new account successfully registered'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResponse'
+        400:
+          description: 'new account fail to register due to empty request body or bad input'
+        500:
+          description: 'server error due to fail communication with other service(s)'
+      deprecated: false
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login
+      operationId: Login
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            example: 
+        required: true
+      responses:
+        200:
+          description: 'user authenticated'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        400:
+          description: 'provided login credential invalid'
+        401:
+          description: 'authentication fail'
+      deprecated: false
+  /auth/check:
+    get:
+      tags:
+      - Auth
+      summary: Check JWT
+      operationId: CheckJWT
+      parameters: []
+      security: 
+        - httpBearer: []
+      responses:
+        200:
+          description: 'valid JWT'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimsResponse'
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - phone
+      - password
+      type: object
+      properties:
+        phone:
+          type: string
+        password:
+          type: string
+      example:
+        phone: "081111111111"
+        password: "63QB"
+    SignupRequest:
+      title: SignupRequest
+      required:
+      - phone
+      - name
+      - role
+      type: object
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+      example:
+        phone: "081111111111"
+        name: "Martha Nielsen"
+        role: "user"
+    SignupResponse:
+      title: SignupResponse
+      type: object
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+        password:
+          type: string
+      example:
+        phone: "081111111111"
+        name: "Martha Nielsen"
+        role: "user"
+        password: "3rjU"
+    LoginResponse:
+      title: SignupResponse
+      type: object
+      properties:
+        token:
+          type: string
+      example: 
+        token: "aaaaaaa.bbbbbbbb.ccccccc"
+    ClaimsResponse:
+      title: ClaimsResponse
+      type: object
+      properties:
+        phone:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+        timestamp:
+          type: string
+      example: 
+        phone: "081111111111"
+        name: "Martha Nielsen"
+        role: "user"
+        timestamp: "2019-11-26 23:21:43 +07:00"
+    CommodityResponse:
+      title: CommodityDetails
+      type: object
+      properties:
+        uuid:
+          type: string
+        komoditas:
+          type: string
+        area_provinsi:
+          type: string
+        area_kota:
+          type: string
+        size:
+          type: string
+        price:
+          type: string
+        tgl_parsed:
+          type: string
+        timestamp:
+          type: string
+      example: 
+        uuid: "8a23fcab-ef67-48b8-8ba1-7055ea91ea3b"
+        komoditas: "Ikan Tunaa"
+        area_provinsi: "JAWA TIMUR"
+        area_kota: "SURABAYA"
+        size: "90"
+        price: "20000"
+        tgl_parsed: "Wed Jun 03 11:32:48 GMT+07:00 2020"
+        timestamp: "1591158768"
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+- httpBearer: []
+tags:
+- name: Misc
+  description: ''
