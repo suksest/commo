@@ -27,13 +27,16 @@ $ cd workspace
 $ git clone https://github.com/suksest/commodity.git
 
 #move to project
-$ cd commo
+$ cd commodity
 
 # Build the docker image first
 $ make docker
 
 # Run the application
 $ make run
+
+# Or you can run default run script
+$ make all
 
 # check if the containers are running
 $ docker ps

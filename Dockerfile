@@ -19,6 +19,18 @@ RUN apk update && apk upgrade && \
 
 WORKDIR /app
 
+# ONLY FOR DEVELOPMENT USE
+# Set environment variable explicitly is not recommended
+# while running on production environment, --
+# use secret management tools
+ENV SERVICE_PORT=17845 \
+    DB_HOST=127.0.0.1 \
+    DB_PORT=3306 \
+    DB_NAME=commo_db \
+    DB_USERNAME=commo \
+    DB_PASSWORD=commo \
+    JWT_SECRET=secret
+
 EXPOSE 17845
 
 COPY --from=builder /app/engine /app
