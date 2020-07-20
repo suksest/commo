@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/suksest/commodity/api"
@@ -11,11 +10,6 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		panic(err)
-	}
-
 	// Echo instance
 	e := echo.New()
 
