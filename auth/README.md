@@ -29,6 +29,9 @@ $ git clone https://github.com/suksest/commodity.git
 #move to project
 $ cd commodity
 
+# Build the docker image first
+$ make docker
+
 # Run the application
 $ make run
 

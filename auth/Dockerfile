@@ -24,7 +24,7 @@ WORKDIR /app
 # while running on production environment, --
 # use secret management tools
 ENV SERVICE_PORT=17845 \
-    DB_HOST=127.0.0.1 \
+    DB_HOST=commo_mysql \
     DB_PORT=3306 \
     DB_NAME=commo_db \
     DB_USERNAME=commo \
