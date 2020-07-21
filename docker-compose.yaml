@@ -1,15 +1,23 @@
 version: "2.3"
 services:
-  web:
+  auth:
     build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: commo_web
+      context: ./auth
+      dockerfile: ./Dockerfile
+    container_name: commo_auth
     ports:
       - 17845:17845
     depends_on:
       mysql:
         condition: service_healthy
+
+  catalog:
+    build: 
+      context: ./catalog
+      dockerfile: ./Dockerfile
+    container_name: commo_catalog
+    ports: 
+      - 3000:3000
 
   mysql:
     image: mysql:latest 
