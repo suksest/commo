@@ -46,4 +46,4 @@ $ make stop
 ```
 
 ### API Documentation
-Import or use `api_doc.yml` in Swagger
+See [API.md](https://github.com/suksest/commodity/blob/master/API.md)

@@ -1,16 +1,5 @@
 ---
 title: Commodity v1.0
-language_tabs:
-  - ruby: Ruby
-  - python: Python
-language_clients:
-  - ruby: ""
-  - python: ""
-toc_footers: []
-includes: []
-search: false
-highlight_theme: darkula
-headingLevel: 2
 generator: widdershins v4.0.1
 
 ---
