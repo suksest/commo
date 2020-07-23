@@ -64,6 +64,47 @@ Email: <a href="mailto:sukmasetyaji@gmail.com">Support</a>
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|get commodity details|[CommodityResponse](#schemacommodityresponse)|
 
+## Get commodity stats
+
+<a id="opIdStatsCommodity"></a>
+
+`GET /catalog/stats`
+
+> Example responses
+
+> 200 Response
+
+```json
+[
+  {
+    "area_provinsi": "JAWA TIMUR",
+    "timestamp": "1591158768",
+    "mean_priceIDR": 20000,
+    "max_priceIDR": 20000,
+    "min_priceIDR": 20000,
+    "mean_priceUSD": 1.3708441999999998,
+    "max_priceUSD": 1.3708441999999998,
+    "min_priceUSD": 1.3708441999999998
+  },
+  {
+    "area_provinsi": "DKI JAKARTA",
+    "timestamp": "1573491600",
+    "mean_priceIDR": 20000,
+    "max_priceIDR": 20000,
+    "min_priceIDR": 20000,
+    "mean_priceUSD": 1.3708442,
+    "max_priceUSD": 1.3708441999999998,
+    "min_priceUSD": 1.3708441999999998
+  }
+]
+```
+
+<h3 id="get-commodity-stats-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|get commodity stats|[CommodityResponse](#schemacommodityresponse)|
+
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 httpBearer
@@ -350,7 +391,22 @@ CommodityDetails
 |area_provinsi|string|false|none|none|
 |area_kota|string|false|none|none|
 |size|string|false|none|none|
-|price|string|false|none|none|
+|priceIDR|number|false|none|none|
+|priceUSD|number|false|none|none|
 |tgl_parsed|string|false|none|none|
 |timestamp|string|false|none|none|
 
+CommodityStats
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|area_provinsi|string|false|none|none|
+|timestamp|string|false|none|none|
+|mean_priceIDR|number|false|none|none|
+|max_priceIDR|number|false|none|none|
+|min_priceIDR|number|false|none|none|
+|mean_priceUSD|number|false|none|none|
+|max_priceUSD|number|false|none|none|
+|min_priceUSD|number|false|none|none|
