@@ -10,7 +10,7 @@
   "author": "Sukma Setyaji",
   "license": "ISC",
   "dependencies": {
-    "alasql": "^0.6.3",
+    "alasql": "^2.5.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "encoding": "^0.1.13",
